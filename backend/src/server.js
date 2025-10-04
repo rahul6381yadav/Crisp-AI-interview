@@ -1,6 +1,9 @@
 const http = require("http");
 const { Server } = require("socket.io");
-const app = require("./app.js");
+const app = require("./app");
+const dotenv = require("dotenv");
+
+dotenv.config();
 
 const server = http.createServer(app);
 
@@ -15,5 +18,5 @@ io.on("connection", (socket) => {
 
 app.set("io", io); // store io instance in app for global access
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 8000;
 server.listen(PORT, () => console.log(`Server running on port ${PORT}`));
